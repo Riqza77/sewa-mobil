@@ -22,7 +22,7 @@
                 <div class="row text-white">
 
                     <div class="col-lg-12">
-                        <h5 class="h1">Sewa & Rental Mobil terbaik <br>Di Kawasan Lokasimu</h5><br>
+                        <h5 class="h1">Sewa & Rental Mobil Terbaik <br>Di Kawasan Lokasimu</h5><br>
                         <p class="h5">Selamat datang Rental Mobil Kami.<br>Kami menyediakan mobil kualitas terbaik
                             dengan
                             harga terjangkau. <br>Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>

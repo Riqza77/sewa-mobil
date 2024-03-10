@@ -2,9 +2,9 @@
 @section('content')
     <div class="content-wrapper register-page">
 
-        <div class="register-box mb-2">
+        <div class="register-box mb-4">
             <div class="register-logo">
-                <a href="../../index2.html"><b>Admin</b>LTE</a>
+                <a href="../../index2.html"><b>Register</b> Page</a>
             </div>
 
             <div class="card">
@@ -60,7 +60,7 @@
                 </form>
 
 
-                <a href="/login" class="text-center mt-3">I already have a membership</a>
+                <a href="/login" class="text-center m-3">I already have a membership</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->

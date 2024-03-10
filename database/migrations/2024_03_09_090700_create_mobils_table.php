@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('merk');
             $table->string('model');
             $table->string('tarif');
-            $table->string('status');
+            $table->integer('status');
             $table->string('gambar');
             $table->timestamps();
         });

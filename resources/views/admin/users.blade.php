@@ -1,8 +1,8 @@
 @extends('admin.main')
 @section('content')
-    <div class="content-wrapper">
+    <div class="content-wrapper ">
 
-        <div class="content">
+        <div class="content mt-3">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">List Pengguna</h3>
@@ -96,7 +96,7 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="sim">Nomor SIM Telepon Pengguna</label>
+                                                                    <label for="sim">Nomor SIM Pengguna</label>
                                                                     <input type="number" name="sim" id="sim"
                                                                         value="{{ $us->sim }}"
                                                                         placeholder="masukkan nomor pengguna"
@@ -107,6 +107,13 @@
                                                                     <input type="number" name="no_telp" id="no_telp"
                                                                         value="{{ $us->no_telp }}"
                                                                         placeholder="masukkan nomor pengguna"
+                                                                        class="form-control">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="username">Username Pengguna</label>
+                                                                    <input type="text" name="username" id="username"
+                                                                        value="{{ $us->username }}"
+                                                                        placeholder="masukkan username pengguna"
                                                                         class="form-control">
                                                                 </div>
                                                                 <div class="form-group">
@@ -189,6 +196,11 @@
                                             <input type="number" name="no_telp" id="no_telp"
                                                 value="{{ old('no_telp') }}" placeholder="masukkan nomor pengguna"
                                                 class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Username Pengguna</label>
+                                            <input type="text" name="username"
+                                                placeholder="masukkan username pengguna" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password Pengguna</label>

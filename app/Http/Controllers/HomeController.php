@@ -22,6 +22,13 @@ class HomeController extends Controller
             'mobil' => Mobil::all()
         ]);
     }
+    public function detailmobil(Mobil $mobil)
+    {
+        return view('detail',[
+            'title' => 'mobil',
+            'mobil' => $mobil
+        ]);
+    }
     public function register()
     {
         return view('register',[
@@ -65,7 +72,12 @@ class HomeController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard')->with('success','Berhasil Login');;
+            if (auth()->user()->level == 1) {
+                return redirect()->intended('dashboard')->with('success','Berhasil Login');
+            } else {
+                return redirect()->intended('/mobil')->with('success','Berhasil Login');
+            }
+            
         }
         return redirect('login');
     }

@@ -17,32 +17,35 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/mobil', [HomeController::class, 'mobil'])->name('mobil');
-Route::get('/login', [HomeController::class, 'login'])->name('login');
-Route::post('/login', [HomeController::class, 'loginp']);
+Route::get('/detail-mobil/{mobil}', [HomeController::class, 'detailmobil'])->name('detail-mobil');
+Route::get('/login', [HomeController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [HomeController::class, 'loginp'])->middleware('guest');
 Route::get('/logout', [HomeController::class, 'logout']);
-Route::get('/register', [HomeController::class, 'register']);
-Route::post('/register', [HomeController::class, 'registerp']);
-Route::get('/dashboard', [AdminController::class, 'index']);
+Route::get('/register', [HomeController::class, 'register'])->middleware('guest');
+Route::post('/register', [HomeController::class, 'registerp'])->middleware('guest');
 
-Route::get('/users', [AdminController::class, 'users']);
-Route::post('/users', [AdminController::class, 'usersp']);
-Route::post('/users/{id}', [AdminController::class, 'userse']);
-Route::get('/users/{id}', [AdminController::class, 'usersd']);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [AdminController::class, 'index']);
 
-Route::get('/mobils', [AdminController::class, 'mobils']);
-Route::post('/mobils', [AdminController::class, 'mobilsp']);
-Route::post('/mobils/{id}', [AdminController::class, 'mobilse']);
-Route::get('/mobils/{id}', [AdminController::class, 'mobilsd']);
+    Route::get('/users', [AdminController::class, 'users']);
+    Route::post('/users', [AdminController::class, 'usersp']);
+    Route::post('/users/{id}', [AdminController::class, 'userse']);
+    Route::get('/users/{id}', [AdminController::class, 'usersd']);
 
-Route::get('/peminjamans', [AdminController::class, 'peminjamans']);
-Route::post('/peminjamans', [AdminController::class, 'peminjamansp']);
-Route::post('/peminjamans/{id}', [AdminController::class, 'peminjamanse']);
-Route::get('/peminjamans{id}', [AdminController::class, 'peminjamansd']);
+    Route::get('/mobils', [AdminController::class, 'mobils']);
+    Route::post('/mobils', [AdminController::class, 'mobilsp']);
+    Route::post('/mobils/{id}', [AdminController::class, 'mobilse']);
+    Route::get('/mobils/{id}', [AdminController::class, 'mobilsd']);
 
-Route::get('/pengembalians', [AdminController::class, 'pengembalians']);
-Route::post('/pengembalians', [AdminController::class, 'pengembaliansp']);
-Route::post('/pengembalians/{id}', [AdminController::class, 'pengembalianse']);
-Route::get('/pengembalians/{id}', [AdminController::class, 'pengembaliansd']);
+    Route::get('/peminjamans', [AdminController::class, 'peminjamans']);
+    Route::post('/peminjamans', [AdminController::class, 'peminjamansp']);
+    Route::post('/peminjamans/{id}', [AdminController::class, 'peminjamanse']);
+    Route::get('/peminjamans{id}', [AdminController::class, 'peminjamansd']);
 
+    Route::get('/pengembalians', [AdminController::class, 'pengembalians']);
+    Route::post('/pengembalians', [AdminController::class, 'pengembaliansp']);
+    Route::post('/pengembalians/{id}', [AdminController::class, 'pengembalianse']);
+    Route::get('/pengembalians/{id}', [AdminController::class, 'pengembaliansd']);
+});
 
 

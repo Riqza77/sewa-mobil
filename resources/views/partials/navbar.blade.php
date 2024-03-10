@@ -24,12 +24,35 @@
 
         <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-            <li class="nav-item {{ $title == 'login' ? 'active' : '' }}">
-                <a href="/login" class="nav-link">Login</a>
-            </li>
-            <li class="nav-item {{ $title == 'register' ? 'active' : '' }}">
-                <a href="/register" class="nav-link">Register</a>
-            </li>
+            @if (!empty(auth()->user()->nama))
+                <li class="nav-item dropdown">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-user"></i>&nbsp;
+                        {{ auth()->user()->nama }}&nbsp;</a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow bg-dark">
+                        @if (auth()->user()->level == 2)
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item text-light"><i class="fa fa-clock"></i>&nbsp;
+                                    History
+                                </a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item text-light"><i class="fa fa-user"></i>&nbsp;
+                                    Profil</a></li>
+                        @endif
+                        <li class="dropdown-divider"></li>
+                        <li><a href="/logout" onclick="return confirm('Apakah Anda Yakin Ingin Logout?')"
+                                class="dropdown-item text-light"><i class="fa fa-power-off"></i>&nbsp; Logout</a></li>
+                        <li class="dropdown-divider"></li>
+                    </ul>
+                </li>
+            @else
+                <li class="nav-item {{ $title == 'login' ? 'active' : '' }}">
+                    <a href="/login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item {{ $title == 'register' ? 'active' : '' }}">
+                    <a href="/register" class="nav-link">Register</a>
+                </li>
+            @endif
 
 
             <li class="nav-item">
